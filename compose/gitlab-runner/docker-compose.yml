@@ -1,0 +1,13 @@
+version: '3'
+services:
+  gitlab-runner:
+    container_name: gitlab-runner_1
+    image: 'gitlab/gitlab-runner'
+    restart: always
+    hostname: 'git-runner-1.bilili.work'
+    extra_hosts:
+      - "git.bilili.work:192.168.56.101"
+    volumes:
+      - '/data/gitlab-runner/config:/etc/gitlab-runner'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      
