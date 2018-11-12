@@ -1,0 +1,16 @@
+version: '3.2'
+services:
+  gitserver:
+    container_name: 'gitease1'
+    image: 'cirocosta/gitserver-http'
+    volumes:
+      - '/staq/data/git/repos:/var/lib/git'
+      - '/staq/data/git/nginx/sites-enabled:/etc/nginx/sites-enabled'
+      - '/staq/data/git/htpasswd:/staq/git/htpasswd'
+    command:
+     - '-start'
+    expose:
+      - "80"
+    environment:
+      - VIRTUAL_HOST=git.staq.work
+      - VIRTUAL_PORT=80
