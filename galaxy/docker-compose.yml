@@ -40,3 +40,18 @@ services:
       - VIRTUAL_PORT=80
       - LETSENCRYPT_HOST=git.staq.work #证书的域名
       - LETSENCRYPT_EMAIL=yuhaixy@outlook.com #证书所有者的邮箱，快过期时会提醒
+  blog:
+    container_name: 'typecho1'
+    image: staq/typecho:20190101-1
+    restart: always
+    volumes:
+      - /staq/data/typecho/data:/data
+      - /staq/data/typecho/uploads:/var/www/html/usr/uploads
+      - /staq/data/typecho/themes:/var/www/html/usr/themes
+      - /staq/data/typecho/plugins:/var/www/html/usr/plugins
+    environment:
+      - VIRTUAL_HOST=www.geehack.com
+      - VIRTUAL_PORT=80
+      - LETSENCRYPT_HOST=www.geehack.com
+      - LETSENCRYPT_ENMAIL=yuhaixy@outlook.com
+

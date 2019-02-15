@@ -1,0 +1,12 @@
+---
+typecho:
+  restart: always
+  image: staq/typecho:20190101-1
+  volumes:
+    - /data/typecho/data:/data
+    - /data/typecho/uploads:/var/www/html/usr/uploads
+    - /data/typecho/themes:/var/www/html/usr/themes
+    - /data/typecho/plugins:/var/www/html/usr/plugins
+
+  ports:
+    - "8099:80"
