@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  pgsql:
+    image: "postgres:9"
+    contianer_name: "pgsql"
+    environment:
+      - POSTGRES_PASSWORD_FILE=/run/secrets/pgsql_secret_data
+    ports:
+      - "5432:5432"
+    volumes:
+      - /data/pgsql:/var/lib/postgresql/data
+    deploy:
+      replicas: 1
+    networks:
+      - core
